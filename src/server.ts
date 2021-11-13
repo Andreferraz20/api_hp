@@ -1,9 +1,11 @@
 import express from "express";
 
-import { GetFromExternalApi } from "./routes";
+import { filterRoutes } from "./routes/filter.routes";
 
 const app = express();
 
-app.get("/", GetFromExternalApi);
+app.use(express.json());
+
+app.use(filterRoutes);
 
 app.listen(3333, () => console.log("Server is running!"));
